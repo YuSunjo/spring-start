@@ -40,6 +40,7 @@ class MemberServiceTest {
 
         //then
         Member findMember = memberService.findOne(saveId).get();
+        memberService.findOne(saveId).get();
         Assertions.assertThat(member.getName()).isEqualTo(findMember.getName());
     }
 
