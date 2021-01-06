@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -23,6 +24,8 @@ class MemberServiceIntegrationTest {
     MemberRepository memberRepository;
 
     @Test
+//    @Commit    --commit 하면 test할 때 작성한것이 db에 들어감 -- Transactional이 롤백주는 역할
+//    @Commit
     void join() {
         //given
         Member member = new Member();
