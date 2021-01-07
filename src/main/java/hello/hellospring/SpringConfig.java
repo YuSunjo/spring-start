@@ -16,11 +16,19 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    private EntityManager em;
+    //data-JPA
+    private final MemberRepository memberRepository;
 
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    @Autowired
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
+//JPA
+//    private EntityManager em;
+//
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
 
     //    private DataSource dataSource;
 //
@@ -32,14 +40,14 @@ public class SpringConfig {
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
     //구현 클래스를 변경해야만 하는 상황에는 bean에 등록을 많이 한다.
-    @Bean
-    public MemberRepository memberRepository() {
-//        return new MemoryMemberRepository();
-//        return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+//    @Bean
+//    public MemberRepository memberRepository() {
+////        return new MemoryMemberRepository();
+////        return new JdbcTemplateMemberRepository(dataSource);
+////        return new JpaMemberRepository(em);
+//    }
 }
